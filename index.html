@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+</head>
+
+<body>
+  <div id="original">
+    <!-- 1 -->
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223423627360750874">Judge : Por la cantidad</a>
+    <!-- 2 -->
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223429867642113306">Adverbe : Ante el operation</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223429867642113306">Question : Como responder formalmente</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223429867642113306">Judge : Quince días, De boda, Un interessa, Un receso, Un compromiso de matrimonio</a>
+    <!-- 3 -->
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Judge : Quiera la conquista, Tu tienes un testigo, Del demandar, Es un mentira, Yo voy hacer mi ejercicio, Mi entrenador personal</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Question : Porque como me visto mal, Cual es tu nombre, Qui eres-tu, Que parte</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Adverbe : Absolumente, Hace (passé), Hay, Normalmente</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Adjectif : Muy provocado, Excelente, Es falso, Muy lindo</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Verbe : Me compraron un appartement, Me montaron un negocio, Yo lo comprendía</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Bonjour : Buenas tardes</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431303683771674">Complexe : Todo lo ella dijo aquí, Mi padres tienen una muy buena posición economica,</a>
+    <!-- 4 -->
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431760074378522">Judge : Primario, En el medio de una cancha, Tú deberías aprender a tener un otra cosa</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431760074378522">Verbe : Y me ridiculisa, Eras tu la gorda loca, Como tu decía</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431760074378522">Adjectif : Una niña obesa y gorda, Turno un poquito más</a>
+    <a href="https://www.tiktok.com/@casocerradofr/video/7223431760074378522">Question : Tú te recuerdo de mi</a>    
+  </div>
+  <script>
+  // Récupérer le conteneur original
+  const originalContainer = document.getElementById('original');
+
+  // Créer un nouveau conteneur pour les nouveaux éléments
+  const newContainer = document.createElement('div');
+
+  // Créer un objet pour stocker les éléments avec la même clé
+  const elementsByKey = {};
+
+  // Boucler sur chaque lien dans le conteneur original
+  originalContainer.querySelectorAll('a').forEach(link => {
+    // Récupérer le contenu du p et le séparer en plusieurs éléments
+    const textContent = link.textContent;
+    const splitContent = textContent.split(':');
+
+    // Créer une clé pour stocker les éléments avec le même texte avant les deux-points
+    const key = splitContent[0].trim();
+
+    // Si la clé n'existe pas encore dans l'objet, la créer avec un tableau vide
+    if (!elementsByKey[key]) {
+      elementsByKey[key] = [];
+    }
+
+    // Ajouter le lien au tableau pour la clé correspondante
+    elementsByKey[key].push(link);
+  });
+
+  // Boucler sur chaque clé dans l'objet
+  Object.keys(elementsByKey).forEach(key => {
+    // Créer un élément h3 pour la clé
+    const newH3 = document.createElement('h3');
+    newH3.textContent = key;
+    newContainer.appendChild(newH3);
+
+    // Boucler sur chaque lien pour la clé et créer une balise p
+    const linksForKey = elementsByKey[key];
+    linksForKey.forEach(link => {
+      const newLink = document.createElement('a');
+      newLink.setAttribute('href', link.getAttribute('href'));
+      const newP = document.createElement('p');
+      /* pour faire un saut de ligne */
+      newP.textContent = link.textContent.split(':')[1].trim();
+      newLink.appendChild(newP);
+      newContainer.appendChild(newLink);
+    });
+  });
+
+  // Remplacer le conteneur original par le nouveau conteneur
+  originalContainer.parentNode.replaceChild(newContainer, originalContainer);
+</script>
+
+</body>
+
+</html>

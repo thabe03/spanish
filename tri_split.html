@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+</head>
+
+<body>
+  <!-- HTML d'origine -->
+<div id="original">
+ <a href="https://www.tiktok.com/@englishbygiovana/video/7213823452799716613">
+      Sport : Pass, Deflated, Pump
+    </a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7195932218823396613">Restroom : It's occupied</a>
+
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7188254693229923589">Quality : Adorable, Classy, Drained,
+      Swamped
+    </a>
+    <a href="https://www.tiktok.com/@helloatibi_bilingual/video/7203702736108440837">Cooking : Pan, Pot, Cutting board,
+      Stove,
+      Electric Kettle, Dishwasher, Faucet, Oven mitts, Cheese grater</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7205209715830279430">Shop : Cartons of milk, Out of
+      Stock</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7213744857863523590">Eletronic : Pinch</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7200854603364175110">Car : Buckled up, Fasten, Roll down,
+      Turn on
+      the heat</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7200383339176447238">Outside : Scarf, Temperature is low</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7197386571803331845">Vacation : Flying, Check any bags, I
+      want
+      carry-on</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7187145031608831238">Temperature : Windy, Lightning, Foggy,
+      Pouring rain,
+      Thunder</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7199663279021526277">Conversation : Yelling, You'd be
+      run-over</a>
+    <a href="https://www.tiktok.com/@schoolonl/video/7185486487599844610">Precision : Take off, Take out, Put down, Pick
+      up, Put in,
+      Put on</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7213003796429933830">Room : Restroom, Bathtub, Lavatory</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7201124859664010501">Shop : Cart, Shopping basket, Dairy
+      product</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7195932218823396613">Room : It's occupied</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7197812357760879878">Conversation : Go along</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7206324627017157894">Instrument : Screwdriver, Pliers</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7204092316049558790">Conversation : I've already changed,
+      Ditching</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7207812851312889094">Vocabulary : Backpacker, Control,
+      Control freak</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7196303846115790085">Shop : Break it</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7193782600945700101">Used : Hand me the butter, Draw the
+      curtains</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7197044624421047557">Shop : Try it on, Fitting room</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7196672605213019398">Conversation : High-calorie food</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7198250105080794373">Car : I ran out of gas, Fuel the tank,
+      Select
+      the grade</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7211521588817136901">Shop : It's bitter</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7208922907710360838">Conversation : Charger</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7212631314057497861">Shop : Browsing</a>
+    <a href="https://www.tiktok.com/@englishbygiovana/video/7210410496560794885">Shop : Complaint</a>
+</div>
+
+<!-- Script pour séparer le contenu du p et créer des balises a avec un p à l'intérieur -->
+<script>
+  // Récupérer le conteneur original
+  const originalContainer = document.getElementById('original');
+
+  // Créer un nouveau conteneur pour les nouveaux éléments
+  const newContainer = document.createElement('div');
+
+  // Boucler sur chaque lien dans le conteneur original
+  originalContainer.querySelectorAll('a').forEach(link => {
+    // Récupérer le contenu du p et le séparer en plusieurs éléments
+    const splitContent = link.textContent.split(':')[1].split(", ")
+
+    // Boucler sur chaque élément séparé et créer une balise a avec un p à l'intérieur
+    splitContent.forEach(content => {
+      const newLink = document.createElement('a');
+      newLink.setAttribute('href', link.getAttribute('href'));
+      const newP = document.createElement('p');
+      newP.textContent = content;
+      newLink.appendChild(newP);
+      newContainer.appendChild(newLink);
+    });
+  });
+
+  // Remplacer le conteneur original par le nouveau conteneur
+  originalContainer.parentNode.replaceChild(newContainer, originalContainer);
+</script>
+  <script>
+    // Récupérer tous les éléments <p>
+    const pElements = document.querySelectorAll('a');
+
+    // Convertir la NodeList en tableau
+    const pArray = Array.from(pElements);
+
+    // Trier les éléments en fonction de leur contenu texte
+    pArray.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+    // Boucler sur les éléments triés et les ajouter au DOM
+    const container = document.querySelector("body");
+    pArray.forEach(p => container.appendChild(p));
+
+  </script>
+</body>
+
+</html>
